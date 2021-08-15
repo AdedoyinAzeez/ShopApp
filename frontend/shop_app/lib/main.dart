@@ -3,15 +3,17 @@ import 'package:shop_app/routes.dart';
 import 'package:shop_app/screens/splash/splash_screen.dart';
 import 'package:shop_app/theme.dart';
 
-// void main() {
-//   runApp(MyApp());
-// }
 void main() {
-  runApp(MaterialApp(
-    title: 'Flutter Demo',
-    home: MyApp(),)
-  );
+  runApp(MyApp());
 }
+// void main() {
+//   runApp(
+//     MaterialApp(
+//       title: 'Flutter Demo',
+//       home: MyApp(),
+//     ),
+//   );
+// }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
       //themeMode: ThemeMode.light,
       theme: theme(),
       initialRoute: SplashScreen.routeName,
@@ -26,4 +29,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

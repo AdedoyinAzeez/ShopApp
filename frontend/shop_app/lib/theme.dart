@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
-ThemeData theme(){
+ThemeData theme() {
   return ThemeData(
     appBarTheme: appBarTheme(),
     scaffoldBackgroundColor: Colors.white,
@@ -15,10 +15,10 @@ ThemeData theme(){
 
 InputDecorationTheme inputDecorationTheme() {
   OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(28),
-      borderSide: BorderSide(color: kTextColor),
-      gapPadding: 10,
-    );
+    borderRadius: BorderRadius.circular(28),
+    borderSide: BorderSide(color: kTextColor),
+    gapPadding: 10,
+  );
   return InputDecorationTheme(
     floatingLabelBehavior: FloatingLabelBehavior.always,
     contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
