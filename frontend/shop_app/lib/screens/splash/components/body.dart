@@ -6,22 +6,20 @@ import '/../components/default_button.dart';
 import '/../constants.dart';
 import '/../size_config.dart';
 
-
 class Body extends StatefulWidget {
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  int currentPage =0;
+  int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to Tokoto, Let’s shop!",
+      "text": "Welcome to Opoor, Let’s shop!",
       "image": "assets/images/splash_1.png"
     },
     {
-      "text":
-      "We help people conect with store \naround United State of America",
+      "text": "We help people conect with store \naround Nigeria",
       "image": "assets/images/splash_2.png"
     },
     {
@@ -40,7 +38,7 @@ class _BodyState extends State<Body> {
             Expanded(
               flex: 3,
               child: PageView.builder(
-                onPageChanged: (value){
+                onPageChanged: (value) {
                   setState(() {
                     currentPage = value;
                   });
@@ -51,21 +49,26 @@ class _BodyState extends State<Body> {
                 ),
               ),
             ),
-            SizedBox(height: 5.0,),
+            SizedBox(
+              height: 5.0,
+            ),
             Expanded(
               flex: 2,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(20)),
                 child: Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
-                          splashData.length,
-                              (index) => buildDot(index: index),
+                        splashData.length,
+                        (index) => buildDot(index: index),
                       ),
                     ),
-                    Spacer(flex: 3,),
+                    Spacer(
+                      flex: 3,
+                    ),
                     DefaultButton(
                       text: "Continue",
                       press: () {
@@ -89,7 +92,7 @@ class _BodyState extends State<Body> {
       width: currentPage == index ? 20 : 6,
       height: 6,
       decoration: BoxDecoration(
-        color: currentPage == index ? kPrimaryColor: Color(0xFFD8D8D8),
+        color: currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
         borderRadius: BorderRadius.circular(3),
       ),
       margin: EdgeInsets.only(right: 5),
@@ -97,4 +100,3 @@ class _BodyState extends State<Body> {
     );
   }
 }
-

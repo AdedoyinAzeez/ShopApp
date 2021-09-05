@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-
 class SplashContent extends StatelessWidget {
   const SplashContent({
     Key? key,
@@ -19,7 +18,7 @@ class SplashContent extends StatelessWidget {
       children: [
         Spacer(),
         Text(
-          'TOKOTO',
+          'OPOOR',
           style: TextStyle(
             fontSize: getProportionateScreenWidth(36),
             color: kPrimaryColor,
