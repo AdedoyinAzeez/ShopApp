@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'components/body.dart';
 
-class SignUpScreen extends StatelessWidget {
-  static String routeName = "/sign_up";
+class OTPScreen extends StatelessWidget {
+  static String routeName = "/otp";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign Up"),
+        title: Text("OTP Verification"),
       ),
       body: Body(),
     );

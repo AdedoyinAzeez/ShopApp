@@ -8,12 +8,12 @@ import 'package:shop_app/screens/login_success/login_success_screen.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class SignForm extends StatefulWidget {
+class SignInForm extends StatefulWidget {
   @override
-  _SignFormState createState() => _SignFormState();
+  _SignInFormState createState() => _SignInFormState();
 }
 
-class _SignFormState extends State<SignForm> {
+class _SignInFormState extends State<SignInForm> {
   final _formKey = GlobalKey<FormState>();
   late String email;
   late String password;
