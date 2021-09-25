@@ -3,7 +3,7 @@ import 'package:shop_app/size_config.dart';
 import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_header.dart';
-
+import 'popular_products.dart';
 import 'special_offers.dart';
 
 class Body extends StatelessWidget {
@@ -21,6 +21,9 @@ class Body extends StatelessWidget {
             Categories(),
             SizedBox(height: getProportionateScreenWidth(30)),
             SpecialOffers(),
+            SizedBox(height: getProportionateScreenWidth(30)),
+            PopularProducts(),
+            SizedBox(height: getProportionateScreenWidth(30))
           ],
         ),
       ),
