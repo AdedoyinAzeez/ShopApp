@@ -32,12 +32,14 @@ class ProductCard extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.all(getProportionateScreenWidth(20)),
                   decoration: BoxDecoration(
-                    color: product.isFavourite
-                        ? kPrimaryColor.withOpacity(0.15)
-                        : kSecondaryColor.withOpacity(0.1),
+                    color: kSecondaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Image.asset(product.images[0]),
+                  //child: Image.asset(product.images[0]),
+                  child: Hero(
+                    tag: product.id.toString(),
+                    child: Image.asset(product.images[0]),
+                  ),
                 ),
               ),
               const SizedBox(height: 5),
@@ -67,7 +69,10 @@ class ProductCard extends StatelessWidget {
                       width: getProportionateScreenWidth(28),
                       height: getProportionateScreenHeight(28),
                       decoration: BoxDecoration(
-                        color: kSecondaryColor.withOpacity(0.1),
+                        color: product.isFavourite
+                            ? kPrimaryColor.withOpacity(0.15)
+                            : kSecondaryColor.withOpacity(0.1),
+                        // color: kSecondaryColor.withOpacity(0.1),
                         shape: BoxShape.circle,
                       ),
                       child: SvgPicture.asset(

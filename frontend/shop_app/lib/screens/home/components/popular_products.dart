@@ -33,11 +33,12 @@ class PopularProducts extends StatelessWidget {
                         context,
                         ProductDetailsScreen.routeName,
                         arguments: ProductDetailsArguments(
-                          product: demoProducts[index],
-                        ),
+                            product: demoProducts[index]),
                       ),
                     );
-                  return SizedBox.shrink();
+
+                  return SizedBox
+                      .shrink(); // here by default width and height is 0
                 },
               ),
               SizedBox(width: getProportionateScreenWidth(20)),
