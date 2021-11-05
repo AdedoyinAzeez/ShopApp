@@ -1,43 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/components/rounded_icon_btn.dart';
+import 'package:flutter/services.dart';
+import 'package:shop_app/components/edit_num_of_items.dart';
 import 'package:shop_app/models/Product.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class ColorDots extends StatelessWidget {
+class ColorDots extends StatefulWidget {
   const ColorDots({
     Key? key,
     required this.product,
   }) : super(key: key);
 
   final Product product;
+  static late int numOfItems = 0;
 
+  @override
+  State<ColorDots> createState() => _ColorDotsState();
+}
+
+class _ColorDotsState extends State<ColorDots> {
   @override
   Widget build(BuildContext context) {
     int selectedColor = 3;
+
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
           ...List.generate(
-            product.colors.length,
+            widget.product.colors.length,
             (index) => ColorDot(
-              color: product.colors[index],
+              color: widget.product.colors[index],
               isSelected: selectedColor == index,
             ),
           ),
           Spacer(),
-          RoundedIconBtn(iconData: Icons.remove, press: () {}),
-          SizedBox(width: getProportionateScreenWidth(15)),
-          RoundedIconBtn(iconData: Icons.add, press: () {}),
+          EditNumOfItems(
+            borderRadius: getProportionateScreenWidth(50),
+            height: getProportionateScreenHeight(40),
+            width: getProportionateScreenWidth(40),
+            scale: 1.0,
+            fontSize: getProportionateScreenWidth(16),
+            numOfItems: ColorDots.numOfItems,
+          ),
         ],
       ),
     );
   }
 }
 
-class ColorDot extends StatelessWidget {
+TextFormField buildNumOfItemsField() {
+  return TextFormField(
+    keyboardType: TextInputType.number,
+    onSaved: (newValue) => ColorDots.numOfItems = newValue! as int,
+    onChanged: (value) {
+      ColorDots.numOfItems = value as int;
+      return null;
+    },
+    style: TextStyle(
+      fontSize: getProportionateScreenWidth(16),
+      fontWeight: FontWeight.w600,
+    ),
+  );
+}
+
+class ColorDot extends StatefulWidget {
   const ColorDot({
     Key? key,
     required this.color,
@@ -48,6 +76,11 @@ class ColorDot extends StatelessWidget {
   final bool isSelected;
 
   @override
+  State<ColorDot> createState() => _ColorDotState();
+}
+
+class _ColorDotState extends State<ColorDot> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 2),
@@ -57,12 +90,12 @@ class ColorDot extends StatelessWidget {
       decoration: BoxDecoration(
         //color: product.colors[0],
         shape: BoxShape.circle,
-        border:
-            Border.all(color: isSelected ? kPrimaryColor : Colors.transparent),
+        border: Border.all(
+            color: widget.isSelected ? kPrimaryColor : Colors.transparent),
       ),
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: color,
+          color: widget.color,
           shape: BoxShape.circle,
         ),
       ),

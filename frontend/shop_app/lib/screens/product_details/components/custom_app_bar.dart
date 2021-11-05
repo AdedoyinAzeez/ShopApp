@@ -21,6 +21,10 @@ class CustomAppBar extends StatelessWidget {
             RoundedIconBtn(
               iconData: Icons.arrow_back_ios,
               press: () => Navigator.pop(context),
+              borderRadius: getProportionateScreenWidth(50),
+              height: getProportionateScreenHeight(40),
+              width: getProportionateScreenWidth(40),
+              scale: 0.8,
             ),
             Spacer(),
             Container(

@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/models/Cart.dart';
 import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/screens/cart/cart_screen.dart';
 import 'package:shop_app/size_config.dart';
 import 'color_dots.dart';
 import 'product_description.dart';
@@ -9,6 +13,7 @@ import 'top_rounded_container.dart';
 
 class Body extends StatelessWidget {
   final Product product;
+  //final int numOfItems = 0;
 
   const Body({required this.product});
   @override
@@ -41,7 +46,16 @@ class Body extends StatelessWidget {
                           ),
                           child: DefaultButton(
                             text: "Add to Cart",
-                            press: () {},
+                            press: () {
+                              var cart = new Cart(
+                                product: product,
+                                numOfItems: ColorDots.numOfItems,
+                              );
+
+                              //if (cart.numOfItems == 0) ColorDots.numOfItems++;
+
+                              addToCart(cart, context);
+                            },
                           ),
                         ),
                       ),
@@ -55,4 +69,48 @@ class Body extends StatelessWidget {
       ),
     );
   }
+}
+
+void addToCart(Cart cart, BuildContext context) {
+  try {
+    bool matched = false;
+    int index = 0;
+
+    if (carts.length == 0) {
+      carts.add(
+        Cart(
+          product: cart.product,
+          numOfItems: ColorDots.numOfItems,
+        ),
+      );
+    } else {
+      for (int i = 0; i < carts.length; i++) {
+        if (carts[i].product == cart.product) {
+          //tempProduct = carts[i].product;
+          matched = true;
+          index = i;
+          break;
+        } else {
+          matched = false;
+        }
+      }
+
+      if (matched) {
+        carts[index].numOfItems += ColorDots.numOfItems;
+      } else {
+        carts.add(
+          Cart(
+            product: cart.product,
+            numOfItems: ColorDots.numOfItems,
+          ),
+        );
+      }
+    }
+    Navigator.pushNamed(context, CartScreen.routeName, arguments: carts);
+  } catch (e) {
+    log(e.toString());
+    throw e;
+  }
+
+  //ColorDots.numOfItems = 0;
 }

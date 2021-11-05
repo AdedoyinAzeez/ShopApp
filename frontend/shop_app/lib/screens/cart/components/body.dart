@@ -12,17 +12,18 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  //List<Cart> carts = [];
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: ListView.builder(
-        itemCount: demoCarts.length,
+        itemCount: carts.length,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
           child: Dismissible(
-            key: Key(demoCarts[0].product.id.toString()),
+            key: Key(carts[index].product.id.toString()),
             direction: DismissDirection.endToStart,
             background: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -39,10 +40,11 @@ class _BodyState extends State<Body> {
             ),
             onDismissed: (direction) {
               setState(() {
-                demoCarts.removeAt(index);
+                carts.removeAt(index);
+                //total -= demoCarts[index].product.price * demoCarts[index].numOfItems;
               });
             },
-            child: CartItemCard(cart: demoCarts[index]),
+            child: CartItemCard(cart: carts[index]),
           ),
         ),
       ),

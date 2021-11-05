@@ -33,7 +33,9 @@ class PopularProducts extends StatelessWidget {
                         context,
                         ProductDetailsScreen.routeName,
                         arguments: ProductDetailsArguments(
-                            product: demoProducts[index]),
+                          product: demoProducts[index],
+                          noOfItems: 0,
+                        ),
                       ),
                     );
 
